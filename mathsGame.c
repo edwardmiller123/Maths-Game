@@ -13,18 +13,20 @@ int main() {
     int i = 0;
     while (i < 10) {
         int num1, num2, answer;
-        answer = -1;
-        while (num1 + num2 != answer) {
-            srand(time(0));
-            num1 = rand() % 11;
-            num2 = rand() % 11;
-            printf("%i + %i = ? \n", num1, num2);
-            scanf("%i", &answer);
+        srand(time(0));
+        num1 = rand() % 11;
+        num2 = rand() % 11;
+        printf("%i + %i = ? \n", num1, num2);
+        scanf("%i", &answer);
+        if (num1 + num2 == answer) {
+           i++; 
+        } else {
+            printf("Game Over");
+            return;
         }
-        i++;
 
     }
     int t_end = clock();
-    int t_total = t_end - t_start;
+    int t_total = (t_end - t_start);
     printf("Game Finished. Your time was %i", t_total);
 }

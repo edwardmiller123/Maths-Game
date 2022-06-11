@@ -13,8 +13,8 @@ int main()
     }
     while (start != 's')
     {
-        printf("Press s to start\n");
         scanf("%c", &start);
+        printf("Press s to start\n");
     }
 
     switch (difficulty)
@@ -45,11 +45,12 @@ int main()
         }
         else
         {
-            printf("Game Over");
+            printf("Incorrect Answer\nGame Over");
             return;
         }
     }
     int t_end = clock();
-    int t_total = (t_end - t_start);
-    printf("Game Finished.\n Your time was %i", t_total);
+    //Timer depends on processor speed so not quite accurate.
+    float t_total = (float)(t_end - t_start)/1000;
+    printf("Game Finished.\nYour time was %f seconds.", t_total);
 }

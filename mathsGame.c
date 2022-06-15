@@ -52,5 +52,13 @@ int main()
     int t_end = clock();
     //Timer depends on processor speed so not quite accurate.
     float t_total = (float)(t_end - t_start)/1000;
-    printf("Game Finished.\nYour time was %f seconds.", t_total);
+    char* rating;
+    if (t_total <= 10.0) {
+        rating = "Gold";
+    } else if (t_total <= 20.0) {
+        rating = "Silver";
+    } else {
+        rating = "Bronze";
+    }
+    printf("Game Finished.\nYour time was %f seconds.\nRating: %s", t_total, rating);
 }

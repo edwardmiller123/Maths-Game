@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 int main()
 {
@@ -45,20 +46,41 @@ int main()
         }
         else
         {
-            printf("Incorrect Answer\nGame Over");
-            return;
+            return printf("Incorrect Answer\nGame Over");
         }
     }
     int t_end = clock();
-    //Timer depends on processor speed so not quite accurate.
-    float t_total = (float)(t_end - t_start)/1000;
-    char* rating;
-    if (t_total <= 10.0) {
+    // Timer depends on processor speed so not quite accurate.
+    float t_total = (float)(t_end - t_start) / 1000;
+    char *rating;
+    if (t_total <= 10.0)
+    {
         rating = "Gold";
-    } else if (t_total <= 20.0) {
+    }
+    else if (t_total <= 20.0)
+    {
         rating = "Silver";
-    } else {
+    }
+    else
+    {
         rating = "Bronze";
     }
-    printf("Game Finished.\nYour time was %f seconds.\nRating: %s", t_total, rating);
+    printf("Game Finished.\nYour time was %f seconds.\nRating: %s\n", t_total, rating);
+    char saveScore[20];
+    while (strcmp(saveScore, "yes") != 0 && strcmp(saveScore, "no") != 0)
+    {
+        printf("Would you like to save your time?\n");
+        scanf("%s", saveScore);
+    }
+    if (strcmp(saveScore, "yes") == 0)
+    {
+        struct User
+        {
+            char name[20];
+            float time;
+            char *ratingOut;
+        };
+        printf("Enter your name\n");
+        struct User user1 = {scanf("%s"), t_total, *rating};
+    }
 }

@@ -77,10 +77,33 @@ int main()
         struct User
         {
             char name[20];
+            char *difficultyOut;
             float time;
             char *ratingOut;
         };
+        char *difficultyBadge;
+        if (maxNum == 6)
+        {
+            difficultyBadge = "Easy";
+        }
+        else if (maxNum == 11)
+        {
+            difficultyBadge = "Medium";
+        }
+        else if (maxNum == 21)
+        {
+            difficultyBadge == "Hard";
+        }
         printf("Enter your name\n");
-        struct User user1 = {scanf("%s"), t_total, *rating};
+        struct User user1 = {scanf("%s"), *difficultyBadge, t_total, *rating};
+        FILE *file;
+        file = fopen("Scoreboard.txt", "w");
+        if (file == NULL)
+        {
+            fprintf(stderr, "\nError oppening file\n");
+            exit(1);
+        }
+        fwrite(&user1, sizeof(struct User), 1, file);
+        fclose(file);
     }
 }

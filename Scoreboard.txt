@@ -1,0 +1,8 @@
+Name: Edward
+Difficulty: Medium
+Time: 17.301001 Seconds
+Rank: Silver
+Name: Edward
+Difficulty: Easy
+Time: 12.052000 Seconds
+Rank: Silver

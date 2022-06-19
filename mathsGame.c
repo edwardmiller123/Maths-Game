@@ -74,14 +74,8 @@ int main()
     }
     if (strcmp(saveScore, "yes") == 0)
     {
-        struct User
-        {
-            char name[20];
-            char *difficultyOut;
-            float time;
-            char *ratingOut;
-        };
         char *difficultyBadge;
+        char *name[20];
         if (maxNum == 6)
         {
             difficultyBadge = "Easy";
@@ -95,15 +89,14 @@ int main()
             difficultyBadge == "Hard";
         }
         printf("Enter your name\n");
-        struct User user1 = {scanf("%s"), *difficultyBadge, t_total, *rating};
-        FILE *file;
-        file = fopen("Scoreboard.txt", "w");
-        if (file == NULL)
+        scanf("%s", name);
+        FILE *fileWrite;
+        fileWrite = fopen("Scoreboard.txt", "a");
+        if (fileWrite == NULL)
         {
-            fprintf(stderr, "\nError oppening file\n");
+            fprintf(stderr, "\nError opening file\n");
             exit(1);
         }
-        fwrite(&user1, sizeof(struct User), 1, file);
-        fclose(file);
+        fprintf(fileWrite, "Name: %s\nDifficulty: %s\nTime: %f Seconds\nRank: %s\n", name, difficultyBadge, t_total, rating);
     }
 }
